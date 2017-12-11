@@ -1,0 +1,16 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sub-line">
+  <div class="line-footer"></div>
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="text-center wow fadeIn">Copyright &copy - 2017 Projeto04 POO  | Desenvolvido por Grupo 004 </p>
+      </div>
+    </div>
+  </div>
+</footer>

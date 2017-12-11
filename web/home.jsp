@@ -1,9 +1,3 @@
-<%-- 
-    Document   : home
-    Created on : 12/11/2017, 20:20:29
-    Author     : Rafael Sousa
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>

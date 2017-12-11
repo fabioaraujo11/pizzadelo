@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pizza
-    Created on : 10/12/2017, 23:49:58
-    Author     : Sammy Guergachi <sguergachi at gmail.com>
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

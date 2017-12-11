@@ -1,0 +1,15 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<nav id="menu" class="container-fluid navbar "  >
+    <div class="brand" style="float:left;" >
+        <h1 class="display-4">Projeto Pizza</h1>
+    </div>
+    <div class="btn-group" style="float:right; margin-top: 10px;">
+        <a href="home.jsp"      class="btn btn-primary btn-group" role="button">Início</a>
+        <a href="pizza.jsp"     class="btn btn-primary btn-group" role="button">Fazer Pedido</a>
+        <a href="pedidos.jsp"   class="btn btn-primary btn-group" role="button">Pedidos [ADM]</a>
+        <a href="meuperfil.jsp" class="btn btn-primary btn-group" role="button">Meu Perfil</a>
+        <a href="cadastro.jsp"  class="btn btn-success btn-group" role="button">Entrar</a>
+        <input type="submit" value="Sair" class="btn btn-danger btn-group"></input>
+    </div>
+</nav>

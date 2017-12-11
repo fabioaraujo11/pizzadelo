@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pedidos
-    Created on : 10/12/2017, 23:50:08
-    Author     : Sammy Guergachi <sguergachi at gmail.com>
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

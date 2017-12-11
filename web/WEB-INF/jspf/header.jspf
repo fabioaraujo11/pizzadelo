@@ -1,15 +1,22 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="br.com.pizzadelo.web.BancoUsuarios"%>
 <%@ page pageEncoding="UTF-8" %>
+<%@page import="br.com.pizzadelo.web.Login" %>
 <nav id="menu" class="container-fluid navbar "  >
     <div class="brand" style="float:left;" >
         <h1 class="display-4">Projeto Pizza</h1>
     </div>
     <div class="btn-group" style="float:right; margin-top: 10px;">
+        <form action="Logout" method="post">
         <a href="home.jsp"      class="btn btn-primary btn-group" role="button">Início</a>
+        <%if (!(session.getAttribute("user") == null)) {%>
         <a href="pizza.jsp"     class="btn btn-primary btn-group" role="button">Fazer Pedido</a>
         <a href="pedidos.jsp"   class="btn btn-primary btn-group" role="button">Pedidos [ADM]</a>
         <a href="meuperfil.jsp" class="btn btn-primary btn-group" role="button">Meu Perfil</a>
-        <a href="cadastro.jsp"  class="btn btn-success btn-group" role="button">Entrar</a>
         <input type="submit" value="Sair" class="btn btn-danger btn-group"></input>
+        <%} else {%>
+        <a href="cadastro.jsp"  class="btn btn-success btn-group" role="button">Entrar</a>
+        <%}%>
+        </form>
     </div>
 </nav>

@@ -9,7 +9,7 @@
 
         <!-- Bootstrap -->
         <%@include  file="WEB-INF/jspf/boot.jspf"%>
-        
+
     </head>  
 
     <body class="fundo" >
@@ -53,15 +53,17 @@
                 </div>
                 <div class="col-sm-6">
                     <h3>Login</h3>
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="text" class="form-control" id="email" placeholder="Digite seu e-mail">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <form action="Login" method="post">
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha:</label>
+                            <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
+                        </div>
+                        <button type="submit" value="login" class="btn btn-primary">Entrar</button>
+                    </form>
                 </div>
             </div>
         </div>

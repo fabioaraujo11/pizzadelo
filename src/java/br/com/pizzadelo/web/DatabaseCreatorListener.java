@@ -98,11 +98,9 @@ public class DatabaseCreatorListener implements ServletContextListener {
         try{
             s.execute(  "CREATE TABLE pedido_item("
           		+ "cd_pedido INTEGER"
-	  		+ ", cd_item INTEGER"
-                        + ", vl_item numeric(10,2)"
+	  		+ ", cd_item INTEGER"                        
            		+ ", CONSTRAINT pedidoitem_fk1 FOREIGN KEY (cd_pedido) REFERENCES PEDIDO(cd_pedido)"
-           		+ ", CONSTRAINT pedidoitem_fk2 FOREIGN KEY (cd_item) REFERENCES ITEM(cd_item)"
-                        + ", CONSTRAINT pedidoitem_fk3 FOREIGN KEY (vl_item) REFERENCES ITEM(vl_item)"
+           		+ ", CONSTRAINT pedidoitem_fk2 FOREIGN KEY (cd_item) REFERENCES ITEM(cd_item)"                        
                    	+ ")");
             System.out.println("Criada tabela pedido_item.");
         }catch(Exception ex2){

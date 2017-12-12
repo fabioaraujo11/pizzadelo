@@ -1,3 +1,4 @@
+<%@page import="br.com.pizzadelo.web.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,36 +25,20 @@
               </tr>
             </thead>
             <tbody>
+                <% for(int i = 0 ; i<Item.getPizzaList().size();i++){
+                    Item lista = Item.getPizzaList().get(i);
+                %>
               <tr>
                 <th scope="row">1</th>
-                <td>Portuguesa</td>
-                <td>Farinha, colocou no forninho</td>
-                <td>R$ 100,00</td>
+                <td><%=lista.getNm_item()%></td>
+                <td><%=lista.getDs_item()%></td>
+                <td><%=lista.getVl_item()%></td>
                 <td>
                     <input type="number" name="qtde" min="0" max="10" placeholder="0" style="width: 40px">
                     <button type="submit" name="addPizza" class="btn btn-dark"><h5>+</h5></button>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Frango c/ Catupiry</td>
-                <td>Mãe to na globo</td>
-                <td>$ 30,10</td>
-                <td>
-                    <input type="number" name="qtde" min="0" max="10" placeholder="0" style="width: 40px">
-                    <button type="submit" name="addPizza" class="btn btn-dark"><h5>+</h5></button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Calabresa</td>
-                <td>Linguiça hmm</td>
-                <td>R$ 50,50</td>
-                <td>
-                    <input type="number" name="qtde" min="0" max="10" placeholder="0" style="width: 40px">
-                    <button type="submit" name="addPizza" class="btn btn-dark"><h5>+</h5></button>
-                </td>
-              </tr>
+             <%}%>
             </tbody>
           </table>
         <p>*Máximo de 10 pizzas por sabor</p>

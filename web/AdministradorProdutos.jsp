@@ -49,45 +49,75 @@ if(request.getParameter("add")!=null){
         <title>JSP Page</title>
         <%@include  file="WEB-INF/jspf/boot.jspf"%>
     </head>
+    <style>
+        #formContainer{
+            width: 35%;
+            height: auto;
+            position: relative;
+            padding: 1%;
+            background: #888;
+            left: 50%;
+            margin-left: -17.5%;
+        }
+        #formContainer form input{
+            margin: 1% 0 1% 0;
+        }
+        #formContainer form input[type="text"]{
+            width: 100%;
+            position: relative;
+            box-sizing: border-box;
+        }
+        #formContainer form input[type="number"]{
+            width: 29.5%;
+            position: relative;
+            float: left;
+            box-sizing: border-box;
+        }
+        #formContainer form select{
+            width: 69.5%;
+            position: relative;
+            float: right;
+            margin: 1% 0 1% 0;
+            padding: 0.7% 0 0.7% 0;
+            box-sizing: border-box;
+        }
+    </style>
     <body>
          <%@include file="WEB-INF/jspf/header.jspf" %>
-          <div class="container">
-         <div>
-             <form>
-                 <fieldset>
-                 <table>
-                     <tr>
-                 <label>Nome</label>
-                 <input type="text" name="nome1" required="">
-                 </tr>
-                 <tr>
-                 <label>Preço</label>
-                 <input type="number" name="preco" required="">
-                 </tr>
-                 <tr>
-                 <label>Descrição</label>
-                 <textarea name="descricao" rows="2" required=""></textarea>
-                 </tr>
-                 <tr>
-                 <label>Tipo</label>
+          <div class="container"">
+         <div class="row">
+                
+             <div id="formContainer">
+                 <form>
+                 <input placeholder="Nome do item" type="text" name="nome1"  required/>
+                 <input type="number" placeholder="Preço R$" name="preco" required="">
+                
                  <select name="tipo" required="">
                     <option value="PIZZA">PIZZA</option>
                     <option value="BEBIDA">BEBIDA</option>     
                  </select>
-                 </tr>
-                 <button type="submit" name="add">Adicionar Item</button>
-                 </table>
+                 <br/>
+                 <div class="form-group">
+                     <textarea placeholder="Descriçao do Produto" class="form-control" id="exampleTextarea" name="descricao" rows="2" required=""></textarea>
+                 </div>
+                  
+                 
+                 <button type="submit" name="add">Adicionar Item</button><br/>
+                  
+                 
+                 
                     
-                 </fieldset>
                  
              </form>
+             </div>
              
          </div>
          
         
               <div class="row"> 
-             <div div class="col-6">
+             <div class="col-6"><br/>  <br/>    
         <table>
+            <h2 style="text-align: center">Pizzas</h2><br/>    
   <tr>
     <thead>
       <th>Produto</th>
@@ -123,8 +153,9 @@ if(request.getParameter("add")!=null){
         <br/>
         
        </div>
-        <div class="col-5">
+        <div class="col-5"><br/>  <br/>  
                <table>
+                    <h2 style="text-align: center">Bebidas</h2><br/> 
   <tr>
     <thead>
       <th>Produto</th>

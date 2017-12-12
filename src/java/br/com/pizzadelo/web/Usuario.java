@@ -1,6 +1,14 @@
 package br.com.pizzadelo.web;
 
+
+import java.sql.PreparedStatement;
+
 public class Usuario {
+
+    static Usuario getUsuario() {
+        Usuario usuario = new Usuario();
+        return usuario;
+    }
     private String nm_usuario;
     private String nm_email_usuario;
     private String cd_password_usuario;
@@ -21,7 +29,37 @@ public class Usuario {
         this.ic_sexo_M_F = ic_sexo_M_F;
         this.cd_cpf_usuario = cd_cpf_usuario;
     }
+    
 
+    public static void setUsuarios(String nm_usuario, String nm_email_usuario, String cd_password_usuario, char nm_tipo_usuario, char ic_sexo_M_F, String cd_cpf_usuario) throws Exception {
+       Usuario usuario = new Usuario(nm_usuario, nm_email_usuario, cd_password_usuario, nm_tipo_usuario, ic_sexo_M_F, cd_cpf_usuario);
+        Usuario.criarUsuario(usuario);
+    }
+
+    public static void inserirXablocs() {
+        Usuario usuario = new Usuario("Fabio Araujo", "fabio_araujo11@hotmail.com", "123", 'A', 'M', "47182262878");
+    }
+
+    
+    
+    public static void limparUsuario(Usuario usuario){
+        usuario = null;
+    }
+
+    public static void criarUsuario(Usuario usuario)
+            throws Exception {
+        String SQL = "INSERT INTO usuario VALUES(?,?,?,?,?,?)";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+            s.setString(1, usuario.getCd_cpf_usuario());
+            s.setString(2, usuario.getNm_email_usuario());
+            s.setString(3, usuario.getNm_usuario());
+            s.setString(4, usuario.getCd_password_usuario());
+            s.setString(5, "U");
+            s.setString(6, String.valueOf(usuario.getIc_sexo_M_F()));
+            s.execute();
+            s.close();
+       
+    }
     public String getNm_usuario() {
         return nm_usuario;
     }

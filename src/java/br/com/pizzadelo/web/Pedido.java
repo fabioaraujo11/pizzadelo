@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Pedido {
     private int cd_pedido;
-    private int cpf_user;
+    private String cpf_user;
     private double vl_total_pedido;
     private Date dt_pedido;
     private String nm_estado_pedido;
@@ -32,7 +32,7 @@ public class Pedido {
          while(rs.next()){
             pedido = new Pedido(
                      rs.getInt("cd_pedido"),
-                     rs.getInt("cpf_user"),
+                     rs.getString("cpf_user"),
                      rs.getDouble("vl_total_pedido"),
                      rs.getDate("dt_pedido"),
                      rs.getString("nm_estado_pedido"),
@@ -52,7 +52,7 @@ public class Pedido {
             int cd = rs.getInt("cd_pedido");
             Pedido vs = new Pedido(
                      cd,
-                     rs.getInt("cpf_user"),
+                     rs.getString("cpf_user"),
                      rs.getDouble("vl_total_pedido"),
                      rs.getDate("dt_pedido"),
                      rs.getString("nm_estado_pedido"),
@@ -87,7 +87,7 @@ public class Pedido {
         return list;
     }
 
-    public Pedido(int cd_pedido, int cpf_user, double vl_total_pedido, Date dt_pedido, String nm_estado_pedido, ArrayList<Item> itens) {
+    public Pedido(int cd_pedido, String cpf_user, double vl_total_pedido, Date dt_pedido, String nm_estado_pedido, ArrayList<Item> itens) {
         this.cd_pedido = cd_pedido;
         this.cpf_user = cpf_user;
         this.vl_total_pedido = vl_total_pedido;
@@ -99,20 +99,28 @@ public class Pedido {
     public void SalvarPedido() throws Exception{
         String SQL = "INSERT INTO pedido VALUES(default, ?, ?, ?, ?)";
         PreparedStatement s = Database.getConnection().prepareStatement(SQL);        
-        s.setInt(1, this.cpf_user);
+        s.setString(1, this.cpf_user);
         s.setDouble(2, this.vl_total_pedido);
         s.setDate(3, new java.sql.Date(this.dt_pedido.getTime()));
         s.setString(4, this.getNm_estado_pedido());        
         s.execute();
         s.close();
+        //this.cd_pedido = getPedidoList().get(getPedidoList().size() - 1).getCd_pedido();
+        try {
         for(int i = 0; i < this.itens.size(); i++) {
             SQL = "INSERT INTO pedido_item VALUES(?, ?)";
             PreparedStatement x = Database.getConnection().prepareStatement(SQL);
             x.setInt(1, this.cd_pedido);
             x.setInt(2, this.itens.get(i).getCd_item());
+            x.execute();
+            x.close();
+        }
+        
+        }
+        catch(Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
-    
 
     public String getNm_estado_pedido() {
         return nm_estado_pedido;
@@ -130,11 +138,11 @@ public class Pedido {
         this.cd_pedido = cd_pedido;
     }
 
-    public int getCpf_user() {
+    public String getCpf_user() {
         return cpf_user;
     }
 
-    public void setCpf_user(int cpf_user) {
+    public void setCpf_user(String cpf_user) {
         this.cpf_user = cpf_user;
     }
 

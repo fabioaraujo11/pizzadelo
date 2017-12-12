@@ -5,9 +5,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    
 try {
-    if(request.getParameter("Enviar").equals("Realizar Venda")) {
-        int cpf_user = 123456789; // colocar session
+    
+    if(request.getParameter("Enviar").equals("Realizar Pedido")) {
+        String cpf_user = "12345678910"; // colocar session
         String[] x = request.getParameterValues("item");
         ArrayList<Item> itens = new ArrayList<>();
         for(int i = 0; i < x.length; i++) {
@@ -21,15 +23,20 @@ try {
             );
             itens.add(item);
         }
+        %>
+        <h1><%=itens.get(0).getCd_item()%></h1>
+        <h1><%=itens.get(1).getCd_item()%></h1>
+<%
         Date dt_pedido = new Date();
         double vl_total_pedido = 10;
-        Pedido pedido = new Pedido(1, cpf_user, vl_total_pedido, dt_pedido, "A FAZER" ,itens);
+        Pedido pedido = new Pedido(1, cpf_user, vl_total_pedido, dt_pedido, "A FAZER" ,itens); //primeiro parametro irelevante
         pedido.SalvarPedido();
     }
-}
+    }
 catch(Exception ex) {
+    System.out.println(ex.getMessage());
   %>
-  <h1>FUDEU</h1>  
+  <h1>Ocorreu um erro</h1>  
 <%}
 %>
 <html>

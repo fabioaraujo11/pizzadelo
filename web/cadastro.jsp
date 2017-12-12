@@ -20,35 +20,35 @@
             <div class="row marcador" >
                 <div class="col-sm-6">
                     <h3>Cadastre-se</h3>
-                    <form>
+                    <form action="Cadastrar" method="post">
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" class="form-control" id="nome">
+                            <input type="text" class="form-control" name="nome">
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF:</label>
-                            <input type="number" class="form-control" id="cpf">
+                            <input type="number" class="form-control" name="cpf">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="text" class="form-control" id="email">
+                            <input type="text" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha:</label>
-                            <input type="text" class="form-control" id="senha">
+                            <input type="text" class="form-control" name="senha">
                         </div>
                         <div class="checkbox">
                             <label for="sexo">Sexo:</label>
                         </div>
                         <div class="radio" name="sexo">
                             <label>
-                                <input type="radio" name="sexo"> Masculino
+                                <input type="radio" name="sexo" value="M"> Masculino
                             </label>
                             <label>
-                                <input type="radio" name="sexo"> Feminino
+                                <input type="radio" name="sexo" value="F"> Feminino
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-default">Salvar</button>
+                        <button type="submit" value="cadastrar" class="btn btn-default">Salvar</button>
                     </form>
                 </div>
                 <div class="col-sm-6">

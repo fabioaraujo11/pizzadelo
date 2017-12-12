@@ -5,17 +5,23 @@ public class Usuario {
     private String nm_email_usuario;
     private String cd_password_usuario;
     private char nm_tipo_usuario;
+    private char ic_sexo_M_F;
     private double cd_cpf_usuario;
 
-    public Usuario(String nm_usuario, String nm_email_usuario, String cd_password_usuario, char nm_tipo_usuario, double cd_cpf_usuario) {
+    public Usuario() {
+    }
+
+    
+    
+    public Usuario(String nm_usuario, String nm_email_usuario, String cd_password_usuario, char nm_tipo_usuario, char ic_sexo_M_F, double cd_cpf_usuario) {
         this.nm_usuario = nm_usuario;
         this.nm_email_usuario = nm_email_usuario;
         this.cd_password_usuario = cd_password_usuario;
         this.nm_tipo_usuario = nm_tipo_usuario;
+        this.ic_sexo_M_F = ic_sexo_M_F;
         this.cd_cpf_usuario = cd_cpf_usuario;
     }
 
-    
     public String getNm_usuario() {
         return nm_usuario;
     }
@@ -48,14 +54,22 @@ public class Usuario {
         this.nm_tipo_usuario = nm_tipo_usuario;
     }
 
+    public char getIc_sexo_M_F() {
+        return ic_sexo_M_F;
+    }
+
+    public void setIc_sexo_M_F(char ic_sexo_M_F) {
+        this.ic_sexo_M_F = ic_sexo_M_F;
+    }
+
     public double getCd_cpf_usuario() {
         return cd_cpf_usuario;
     }
 
-    public void setCd_cpf_usuario(int cd_cpf_usuario) {
+    public void setCd_cpf_usuario(double cd_cpf_usuario) {
         this.cd_cpf_usuario = cd_cpf_usuario;
     }
-    
+
     
     
 }

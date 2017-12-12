@@ -29,4 +29,12 @@
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Cadastrar</servlet-name>
+        <servlet-class>br.com.pizzadelo.web.Cadastrar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cadastrar</servlet-name>
+        <url-pattern>/Cadastrar</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -50,34 +50,38 @@ public class DatabaseCreatorListener implements ServletContextListener {
 	   		+ ", vl_item numeric(10,2) NOT NULL "
 	   		+ ", ds_item VARCHAR(255) NOT NULL"	 	         
            		+ ", nm_item VARCHAR(30) NOT NULL"
-                        + ", tipo_item INTEGER NOT NULL"
+                        + ", tipo_item VARCHAR(30) NOT NULL"
                    	+ ")");
             
+            s.execute ("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Portuguesa', 'PIZZA')");
+            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Mussarela', 'PIZZA')");
+            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Calabresa', 'PIZZA')");
+            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Frango com Catupiry', 'PIZZA')");
+            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Quatro Queijos', 'PIZZA')");
+            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (30.00, 'Pizza de', 'Tomate', 'PIZZA')");
+            
+           s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (5.00, '-', 'Coca-Cola', 'BEBIDA')");
+           s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (5.00, '-', 'Agua', 'BEBIDA')");
+           s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (5.00, '-', 'Guarana', 'BEBIDA')");
+           s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (5.00, '-', 'Fanta Laranja', 'BEBIDA')");
+           s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n" +
+"	VALUES (5.00, '-', 'Sprite', 'BEBIDA')");
             System.out.println("Criada tabela item.");            
         }catch(Exception ex2){
             System.out.println("Erro ao criar a tabela item: "+ex2.getMessage());
         }
-    }
+    }    
     
-    private void createTipoItemTable(Statement s){
-        try{
-            s.execute("CREATE TABLE tipo_item("
-          		+ "cd_tipo_item INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)"
-	   		+ ", nm_item VARCHAR(30) NOT NULL"
-                        + ")");
-            s.execute("INSERT INTO tipo_item VALUES("
-                + "default"
-                + ", 'Pizza'"
-                + ")");
-            s.execute("INSERT INTO tipo_item VALUES("
-                + "default"
-                + ", 'Bebida'"
-                + ")");
-            System.out.println("Criada tabela tipo_item.");            
-        }catch(Exception ex2){
-            System.out.println("Erro ao criar a tabela tipo_item: "+ex2.getMessage());
-        }
-    }
     private void createPedidoTable(Statement s){
         try{
             s.execute("CREATE TABLE pedido("
@@ -120,8 +124,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
             createUsuarioTable(s);
             createItemTable(s);
             createPedidoTable(s);
-	    createPedidoItemTable(s);
-            createTipoItemTable(s);
+	    createPedidoItemTable(s);            
     
             s.close();
             c.close();

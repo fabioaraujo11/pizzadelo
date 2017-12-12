@@ -20,14 +20,15 @@ public class DatabaseCreatorListener implements ServletContextListener {
     private void createUsuarioTable(Statement s) {
         try {
             s.execute("CREATE TABLE usuario("
-                    + "cpf_usuario VARCHAR(11) PRIMARY KEY"
+                    + " cd_usuario INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)"
+                    + ", cpf_usuario VARCHAR(11)"
                     + ", nm_email_usuario VARCHAR(255) NOT NULL"
                     + ", nm_usuario VARCHAR(255) NOT NULL"
                     + ", password_user varchar(255) NOT NULL"
                     + ", nm_tipo_usuario CHAR(1) NOT NULL"
                     + ", ic_sexo_m_f CHAR(1) NOT NULL"
                     + ")");
-            s.execute("INSERT INTO APP.USUARIO VALUES("
+            s.execute("INSERT INTO APP.USUARIO (cpf_usuario, nm_email_usuario, nm_usuario, password_user, nm_tipo_usuario, ic_sexo_m_f) VALUES("
                     + "'12345678910'"
                     + ", 'admin@root.com.br'"
                     + ", 'Administrador do Sistema'"
@@ -86,11 +87,11 @@ public class DatabaseCreatorListener implements ServletContextListener {
         try {
             s.execute("CREATE TABLE pedido("
                     + "cd_pedido INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)"
-                    + ", cpf_user VARCHAR(11)"
+                    + ", cd_usuario integer"
                     + ", vl_total_pedido numeric(10,2)"
                     + ", dt_pedido DATE"
                     + ", nm_estado_pedido VARCHAR(30)"
-                    + ", CONSTRAINT pedido_fk1 FOREIGN KEY (cpf_user) REFERENCES usuario(cpf_usuario)"
+                    + ", CONSTRAINT pedido_fk1 FOREIGN KEY (cd_usuario) REFERENCES usuario(cd_usuario)"
                     + ")");
             System.out.println("Criada tabela pedido.");
         } catch (Exception ex2) {

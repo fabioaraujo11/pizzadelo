@@ -36,7 +36,8 @@ public class BancoUsuarios {
     public static void criarUsuario(Usuario usuario)
             throws Exception {
         
-        String SQL = "INSERT INTO APP.USUARIO VALUES(?,?,?,?,?,?)";
+        String SQL = "INSERT INTO APP.USUARIO (cpf_usuario, nm_email_usuario, nm_usuario, password_user, nm_tipo_usuario, ic_sexo_m_f) "
+                + "VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement s = Database.getConnection().prepareStatement(SQL);
             s.setString(1, usuario.getCd_cpf_usuario());

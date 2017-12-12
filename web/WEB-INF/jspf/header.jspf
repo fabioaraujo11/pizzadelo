@@ -1,5 +1,5 @@
 <%@page import="br.com.pizzadelo.web.Database"  %>
-<%@page import="br.com.pizzadelo.web.BancoUsuarios"%>
+<%@page import="br.com.pizzadelo.web.Usuario"%>
 <%@ page pageEncoding="UTF-8" %>
 <%@page import="br.com.pizzadelo.web.Login" %>
 <nav id="menu" class="container-fluid navbar "  >

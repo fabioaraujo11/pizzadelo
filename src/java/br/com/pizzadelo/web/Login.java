@@ -25,19 +25,19 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        BancoUsuarios.inserirXablocs();
+        Usuario.inserirXablocs();
         String usuario = request.getParameter("email");
         String senha = request.getParameter("senha");
         String page = "cadastro.jsp";
         String msg = null;
 
         try {
-            if (BancoUsuarios.getUsuario() == null) {
+            if (Usuario.getUsuario() == null) {
                 msg = "<script>alert('Nenhum usuário cadastrado.')</script>";
             } else {
                 msg = "<script>alert('Usuário e/ou senha incorretos.')</script>";
                 Usuario user = new Usuario();
-                user = BancoUsuarios.getUsuario();
+                user = Usuario.getUsuario();
                 if (usuario.equals(user.getNm_email_usuario()) && senha.equals(user.getCd_password_usuario())) {
                     HttpSession session = request.getSession(true); // iniciando sessão
                     session.setAttribute("user", usuario);

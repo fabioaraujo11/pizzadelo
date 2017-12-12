@@ -6,6 +6,7 @@
 package br.com.pizzadelo.web;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -34,9 +35,11 @@ public class BancoUsuarios {
 
     public static void criarUsuario(Usuario usuario)
             throws Exception {
-        String SQL = "INSERT INTO usuario VALUES(?,?,?,?,?,?)";
-        try (PreparedStatement s = Database.getConnection().prepareStatement(SQL)) {
-            s.setString(1,usuario.getCd_cpf_usuario());
+        
+        String SQL = "INSERT INTO APP.USUARIO VALUES(?,?,?,?,?,?)";
+        try {
+            PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+            s.setString(1, usuario.getCd_cpf_usuario());
             s.setString(2, usuario.getNm_email_usuario());
             s.setString(3, usuario.getNm_usuario());
             s.setString(4, usuario.getCd_password_usuario());
@@ -44,10 +47,12 @@ public class BancoUsuarios {
             s.setString(6, String.valueOf(usuario.getIc_sexo_M_F()));
             s.execute();
             s.close();
+        } catch (SQLException e) {
+            
         }
     }
-    
-    public static void limparUsuario(){
+
+    public static void limparUsuario() {
         usuario = null;
     }
 }

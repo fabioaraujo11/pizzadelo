@@ -117,6 +117,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             String url = "jdbc:derby:c:/derby/ProjetoPizza;create=true";
+            //String url = "jdbc:derby:/home/sidskan/derby/ProjetoPizza;create=true";
             Connection c = DriverManager.getConnection(url);
             Statement s = c.createStatement();
             System.out.println("Iniciando a criação do BD.");
@@ -128,6 +129,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
             s.close();
             c.close();
             DriverManager.getConnection("jdbc:derby:c:/derby/ProjetoPizza;shutdown=true");
+            //DriverManager.getConnection("jdbc:derby:/home/sidskan/derby/ProjetoPizza;shutdown=true");
         } catch (Exception ex) {
             System.out.println("Erro: " + ex.getMessage());
         }

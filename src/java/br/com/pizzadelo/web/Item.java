@@ -152,5 +152,23 @@ public class Item {
         this.tipo_item = tipo_item;
     }
     
-    
+    public static Item getItemByName(String name) throws Exception{
+        Item item = null;
+        String SQL = "SELECT * FROM item WHERE nm_item =?";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+        s.setString(1, name);
+        ResultSet rs = s.executeQuery();
+        while(rs.next()){
+           item = new Item(
+                    rs.getInt("cd_item"),
+                    rs.getDouble("vl_item"),
+                    rs.getString("ds_item"),
+                    rs.getString("nm_item"),
+                    rs.getString("tipo_item")
+            );             
+        }
+        rs.close();
+        s.close();
+        return item;
+    }
 }

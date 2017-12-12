@@ -42,9 +42,9 @@ public class Cadastrar extends HttpServlet {
         String icSexoMF = request.getParameter("sexo");
         char icSexoMFCHAR =  icSexoMF.charAt(0);
         
-        BancoUsuarios.getUsuario();
+        
         try {
-            BancoUsuarios.setUsuarios(nmCliente, nmEmail,cdSenha,'U',icSexoMFCHAR,cdCPFCliente);
+           Usuario.setUsuarios(nmCliente, nmEmail,cdSenha,'U',icSexoMFCHAR,cdCPFCliente);
         } catch (Exception ex) {
             Logger.getLogger(Cadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }

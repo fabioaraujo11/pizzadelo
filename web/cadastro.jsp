@@ -27,11 +27,11 @@
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF:</label>
-                            <input type="number" class="form-control" name="cpf">
+                            <input type="text" class="form-control" name="cpf">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="text" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha:</label>

@@ -73,18 +73,33 @@ public class Item {
         return list;
     }
 
-    public static void inserirItem(int cd_item, double vl_item , String ds_item, String nm_item, String tipo_item) throws Exception{
+    public static void inserirPizza(double vl_item , String ds_item, String nm_item) throws Exception{
         String SQL = "INSERT INTO item VALUES(default,?,?,?,?)";
-        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
-        s.setInt(1,cd_item);
-        s.setDouble(2, vl_item);
-        s.setString(3, ds_item);
-        s.setString(4, nm_item);
-        s.setString(5, tipo_item);        
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);        
+        s.setDouble(1, vl_item);
+        s.setString(2, ds_item);
+        s.setString(3, nm_item);
+        s.setString(4, "PIZZA");        
         s.execute();
         s.close();
     }
-    
+    public static void inserirBebida( double vl_item , String ds_item, String nm_item) throws Exception{
+        String SQL = "INSERT INTO item VALUES(default,?,?,?,?)";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+        s.setDouble(1, vl_item);
+        s.setString(2, ds_item);
+        s.setString(3, nm_item);
+        s.setString(4, "BEBIDA");        
+        s.execute();
+        s.close();
+    }
+    public static void deletaItem(int cd_item) throws Exception{
+        String SQL ="DELETE FROM item WHERE cd_item =?";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+        s.setInt(1,cd_item);
+        s.execute();
+        s.close();        
+    }
     
     public Item(int cd_item, double vl_item, String ds_item, String nm_item, String tipo_item) {
         this.cd_item = cd_item;

@@ -20,7 +20,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
     private void createUsuarioTable(Statement s) {
         try {
             s.execute("CREATE TABLE usuario("
-                    + "cpf_usuario DOUBLE PRIMARY KEY"
+                    + "cpf_usuario VARCHAR(11) PRIMARY KEY"
                     + ", nm_email_usuario VARCHAR(255) NOT NULL"
                     + ", nm_usuario VARCHAR(255) NOT NULL"
                     + ", password_user varchar(255) NOT NULL"
@@ -28,7 +28,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
                     + ", ic_sexo_m_f CHAR(1) NOT NULL"
                     + ")");
             s.execute("INSERT INTO APP.USUARIO VALUES("
-                    + "123456789"
+                    + "'12345678910'"
                     + ", 'admin@root.com.br'"
                     + ", 'Administrador do Sistema'"
                     + ", 'root'"
@@ -86,7 +86,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
         try {
             s.execute("CREATE TABLE pedido("
                     + "cd_pedido INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)"
-                    + ", cpf_user INTEGER"
+                    + ", cpf_user VARCHAR(11)"
                     + ", vl_total_pedido numeric(10,2)"
                     + ", dt_pedido DATE"
                     + ", nm_estado_pedido VARCHAR(30)"

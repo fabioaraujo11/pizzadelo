@@ -36,7 +36,7 @@ public class Cadastrar extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String nmCliente = request.getParameter("nome");
-        double cdCPFCliente = Double.parseDouble(request.getParameter("cpf"));
+        String cdCPFCliente = request.getParameter("cpf");
         String nmEmail = request.getParameter("email");
         String cdSenha = request.getParameter("senha");
         String icSexoMF = request.getParameter("sexo");

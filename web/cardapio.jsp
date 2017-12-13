@@ -16,7 +16,7 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
-        <div class="container">
+         <div class="container">
             <br>
             <table class="table">
                 <thead>
@@ -29,6 +29,14 @@
                 <tbody>
                     <%for(int i = 0; i < Item.getPizzaList().size(); i++) {
                     Item lista = Item.getPizzaList().get(i);%>
+                    <tr>
+                        <td><%=lista.getNm_item()%></td>
+                        <td><%=lista.getDs_item()%></td>
+                        <td><%=lista.getVl_item()%></td>
+                    </tr>
+                    <%}%>
+                     <%for(int i = 0; i < Item.getBebidaList().size(); i++) {
+                    Item lista = Item.getBebidaList().get(i);%>
                     <tr>
                         <td><%=lista.getNm_item()%></td>
                         <td><%=lista.getDs_item()%></td>

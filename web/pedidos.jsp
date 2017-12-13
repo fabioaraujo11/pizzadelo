@@ -8,10 +8,11 @@
     
 try {
     
-    if(request.getParameter("Enviar").equals("Realizar Pedido")) {
+    if(request.getParameter("Enviar") != null) {
         String cpf_user = "12345678910"; // colocar session
         String[] x = request.getParameterValues("item");
         ArrayList<Item> itens = new ArrayList<>();
+        double vl_total_pedido = 0;
         for(int i = 0; i < x.length; i++) {
             Item itemx = Item.getItemByName(x[i]);
             Item item = new Item(
@@ -22,13 +23,11 @@ try {
                     itemx.getTipo_item()
             );
             itens.add(item);
+            vl_total_pedido += item.getVl_item();
+
         }
-        %>
-        <h1><%=itens.get(0).getCd_item()%></h1>
-        <h1><%=itens.get(1).getCd_item()%></h1>
-<%
         Date dt_pedido = new Date();
-        double vl_total_pedido = 10;
+
         Pedido pedido = new Pedido(1, cpf_user, vl_total_pedido, dt_pedido, "A FAZER" ,itens); //primeiro parametro irelevante
         pedido.SalvarPedido();
     }
@@ -101,7 +100,7 @@ catch(Exception ex) {
                 </table>
                     <center><input type="submit" class="btn-primary btn-lg" name="Enviar" value="Realizar Pedido"></center>
                 </form>
-                <h3>Total: R$</h3><h3 id="preco">0.00</h3>
+                <h3 style="display: inline">Total: R$</h3><h3 style="display: inline" id="preco">0.00</h3>
             </div>
         </div>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
@@ -110,6 +109,7 @@ catch(Exception ex) {
 <script type="text/javascript">
     function AdicionarBebida() {    
         bebida = document.getElementById("bebida").value;
+        
         valor = document.getElementById(document.getElementById("bebida").value).value;
         table = document.getElementById("tbitem");
         total = Number(document.getElementById("preco").innerHTML);
@@ -132,6 +132,7 @@ catch(Exception ex) {
         linha.appendChild(preco);
         linha.appendChild(nome_input);
         table.appendChild(linha);
+        //document.getElementById("bebida").value = "";
         
     }
     function AdicionarPizza() {
@@ -159,5 +160,7 @@ catch(Exception ex) {
         linha.appendChild(preco);
         linha.appendChild(nome_input);
         table.appendChild(linha);
+        document.getElementById("pizza").value = "";
+       
     }
 </script>

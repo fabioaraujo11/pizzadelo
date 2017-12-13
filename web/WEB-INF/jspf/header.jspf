@@ -2,11 +2,11 @@
 <%@page import="br.com.pizzadelo.web.Usuario"%>
 <%@ page pageEncoding="UTF-8" %>
 <%@page import="br.com.pizzadelo.web.Login" %>
-<nav id="menu" class="container-fluid navbar "  style="background-color: #F5F5DC">
+<nav id="menu" class="container-fluid navbar "  style="background-color: #f89b18">
     <div class="brand" style="float:left;" >
-        <h1 class="display-4">Projeto Pizza</h1>
+        <h1 class="display-4">PIZZADELO</h1>
     </div>
-    <div class="btn-group" style="float:right; margin-top: 10px;">
+    <div class="btn-group" style="float:right; margin-top: 20px;">
         <form action="Logout" method="post">
             <a href="home.jsp"                      class="btn btn-primary btn-group" role="button">Início</a>
             <%if (!(session.getAttribute("me.nm_usuario") == null)) {%>

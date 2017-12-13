@@ -28,7 +28,6 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        //Usuario.inserirXablocs();
         String usuario = request.getParameter("email");
         String senha = request.getParameter("senha");
         String page = "cadastro.jsp";
@@ -59,33 +58,12 @@ public class Login extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher(page);
             rd.include(request, response);
         } catch (NullPointerException e) {
-            out.println("<script>alert('DEU ERRINHO')</script>");
+            out.println("<script>alert('" + e + "')</script>");
 
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        try {
-//            Usuario u = Usuario.getUser(usuario, senha);
-//            if (u == null) {
-//                msg = "Login e/ou senha não encontrados";
-//            } else {
-//                HttpSession session = request.getSession(true);
-//                session.setAttribute("me.nm_usuario", u.getNm_usuario());
-//                session.setAttribute("me.nm_email_usuario", u.getNm_email_usuario());
-//                session.setAttribute("me.nm_tipo_usuario", u.getNm_tipo_usuario());
-//                session.setAttribute("me.cpf_usuario", u.getCd_cpf_usuario());
-//                session.setAttribute("me.password_user", u.getCd_password_usuario());
-//                session.setAttribute("me.ic_sexo_m_f", u.getIc_sexo_M_F());
-//                page = "home.jsp";
-//                //response.sendRedirect(request.getContextPath() + "/home.jsp");
-//            }
-//
-//            RequestDispatcher rd = request.getRequestDispatcher(page);
-//            rd.include(request, response);
-//        } catch (Exception ex) {
-//            msg = ex.getMessage();
-//        }
     }
 
 }

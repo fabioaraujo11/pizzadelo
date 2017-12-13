@@ -3,10 +3,13 @@
     Created on : 11/12/2017, 20:18:10
     Author     : vlf
 --%>
+<%@page import="jdk.nashorn.internal.runtime.ListAdapter"%>
 <%@page import="br.com.pizzadelo.web.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+
+    Item itemo = null;
 
     String erro1 = null;
     if (request.getParameter("rmv") != null) {
@@ -38,8 +41,10 @@
             erro1 = e.getMessage();
         }
     }
-    
-                       
+
+    if (request.getParameter("edt") != null) {
+        itemo = Item.getBebidaList().get(0);
+    }
 
 %>
 <html>
@@ -99,7 +104,7 @@
     <body background="images/pizzaaa.jpg">
         <%@include file="WEB-INF/jspf/header.jspf" %>
         <div class="container">
-            <div class="row">                
+            <div class="row" >                
                 <div id="formContainer">
                     <form>
                         <input placeholder="Nome do item" type="text" name="nome1"  required/>
@@ -121,83 +126,83 @@
 
             </div>
 
+            <div class="row container">
+                <div class="col-xs-6">            
+                    <table class="table table-hover">
+                        <h2 style="text-align: left; color : white;">Pizzas</h2><br/>    
+                        <tr>
+                        <thead style="background-color: white;">
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                        <th>Remover</th>
+                        <th>Editar</th>
+                        </thead>
+                        </tr>
+                        <% for (int i = 0; i < Item.getPizzaList().size(); i++) {
+                                Item lista = Item.getPizzaList().get(i);
+                        %>
+                        <tr id="td">
+                            <td ><%=lista.getNm_item()%></td>
+                            <td><%=lista.getVl_item()%></td>
+                            <td><%=lista.getDs_item()%></td>  
+                            <td>
+                                <form>
+                                    <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
+                                    <button type="submit" name="rmv">Remover</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form>
+                                    <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
+                                    <button type="button" name="edt" data-toggle="modal" data-target="#myModal">Editar</button>
 
+                                </form>
+                            </td>
+                        </tr>
+                        <% }
+                        %>
+                    </table>
+                    <br/>
+                </div>
 
-            <div id="pizza">            
-                <table class="table table-hover">
-                    <h2 style="text-align: left; color : white;">Pizzas</h2><br/>    
-                    <tr>
-                    <thead style="background-color: white;">
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Descrição</th>
-                    <th>Remover</th>
-                    <th>Editar</th>
-                    </thead>
-                    </tr>
-                    <% for (int i = 0; i < Item.getPizzaList().size(); i++) {
-                            Item lista = Item.getPizzaList().get(i);
-                    %>
-                    <tr id="td">
-                        <td ><%=lista.getNm_item()%></td>
-                        <td><%=lista.getVl_item()%></td>
-                        <td><%=lista.getDs_item()%></td>  
-                        <td>
-                            <form>
-                                <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
-                                <button type="submit" name="rmv">Remover</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form>
-                                <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
-                                <button type="button" name="edt" data-toggle="modal" data-target="#myModal">Editar</button>
-                                
-                            </form>
-                        </td>
-                    </tr>
-                    <% }
-                    %>
-                </table>
-                <br/>
-            </div>
+                <div class="col-xs-6">
 
-            <div id="pizza">
-
-                <table class="table table-hover">
-                    <h2 style="text-align: left; color : white;">Bebidas</h2><br/> 
-                    <tr>
-                    <thead style="background-color: white">
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Descrição</th>
-                    <th>Remover</th>
-                    <th>Editar</th>
-                    </thead>
-                    </tr>
-                    <%for (int i = 0; i < Item.getBebidaList().size(); i++) {
-                            Item lista = Item.getBebidaList().get(i);
-                    %>
-                    <tr id="td">
-                        <td><%=lista.getNm_item()%></td>
-                        <td><%=lista.getVl_item()%></td>
-                        <td><%=lista.getDs_item()%></td>  
-                        <td>
-                            <form>
-                                <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
-                                <button type="submit" name="rmv">Remover</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form>
-                                <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
-                                <button type="button" method name="edt"  data-toggle="modal" data-target="#myModal">Editar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <% }
-                    %>
-                </table>
+                    <table class="table table-hover">
+                        <h2 style="text-align: left; color : white;">Bebidas</h2><br/> 
+                        <tr>
+                        <thead style="background-color: white">
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Descrição</th>
+                        <th>Remover</th>
+                        <th>Editar</th>
+                        </thead>
+                        </tr>
+                        <%for (int i = 0; i < Item.getBebidaList().size(); i++) {
+                                Item lista = Item.getBebidaList().get(i);
+                        %>
+                        <tr id="td">
+                            <td><%=lista.getNm_item()%></td>
+                            <td><%=lista.getVl_item()%></td>
+                            <td><%=lista.getDs_item()%></td>  
+                            <td>
+                                <form>
+                                    <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
+                                    <button type="submit" name="rmv">Remover</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form>
+                                    <input type="hidden" name="id" value="<%=lista.getCd_item()%>">
+                                    <button type="button" method name="edt"  data-toggle="modal" data-target="#myModal">Editar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }
+                        %>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -211,7 +216,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    
+
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Editar Item</h4>
@@ -223,7 +228,6 @@
                                 <form>
                                     <input placeholder="Nome do item" type="text" name="nome1" value="" required/>
                                     <input type="number" placeholder="Preço R$" name="preco" value="" required="">
-
                                     <select name="tipo" required="" selected="">
                                         <option value="PIZZA">PIZZA</option>
                                         <option value="BEBIDA">BEBIDA</option>     

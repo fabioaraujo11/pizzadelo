@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -62,7 +63,7 @@
                             <label for="senha">Senha:</label>
                             <input type="password" name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
                         </div>
-                        <button type="submit" value="login" class="btn btn-primary">Entrar</button>
+                        <button type="submit" value="login" name="do-login" class="btn btn-primary">Entrar</button>
                     </form>
                 </div>
             </div>

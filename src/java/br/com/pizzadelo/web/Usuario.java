@@ -2,6 +2,8 @@ package br.com.pizzadelo.web;
 
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Usuario {
 
@@ -12,8 +14,8 @@ public class Usuario {
     private String nm_usuario;
     private String nm_email_usuario;
     private String cd_password_usuario;
-    private char nm_tipo_usuario;
-    private char ic_sexo_M_F;
+    private String nm_tipo_usuario;
+    private String ic_sexo_M_F;
     private String cd_cpf_usuario;
 
     public Usuario() {
@@ -21,7 +23,7 @@ public class Usuario {
 
     
     
-    public Usuario(String nm_usuario, String nm_email_usuario, String cd_password_usuario, char nm_tipo_usuario, char ic_sexo_M_F, String cd_cpf_usuario) {
+    public Usuario(String nm_usuario, String nm_email_usuario, String cd_password_usuario, String nm_tipo_usuario, String ic_sexo_M_F, String cd_cpf_usuario) {
         this.nm_usuario = nm_usuario;
         this.nm_email_usuario = nm_email_usuario;
         this.cd_password_usuario = cd_password_usuario;
@@ -31,13 +33,13 @@ public class Usuario {
     }
     
 
-    public static void setUsuarios(String nm_usuario, String nm_email_usuario, String cd_password_usuario, char nm_tipo_usuario, char ic_sexo_M_F, String cd_cpf_usuario) throws Exception {
+    public static void setUsuarios(String nm_usuario, String nm_email_usuario, String cd_password_usuario, String nm_tipo_usuario, String ic_sexo_M_F, String cd_cpf_usuario) throws Exception {
        Usuario usuario = new Usuario(nm_usuario, nm_email_usuario, cd_password_usuario, nm_tipo_usuario, ic_sexo_M_F, cd_cpf_usuario);
         Usuario.criarUsuario(usuario);
     }
 
     public static void inserirXablocs() {
-        Usuario usuario = new Usuario("Fabio Araujo", "fabio_araujo11@hotmail.com", "123", 'A', 'M', "47182262878");
+        Usuario usuario = new Usuario("Fabio Araujo", "fabio_araujo11@hotmail.com", "123", "A", "M", "47182262878");
     }
 
     
@@ -60,6 +62,27 @@ public class Usuario {
             s.close();
        
     }
+    
+    public static Usuario getUser(String login, String password) throws SQLException{
+        String SQL = "SELECT * FROM usuario WHERE nm_email_usuario=? AND password_user=?";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+        s.setString(1, login);
+        s.setString(2, password);
+        ResultSet rs = s.executeQuery();
+        Usuario u = null;
+        if(rs.next()){
+            u = new Usuario(rs.getString("nm_usuario")
+                    , rs.getString("nm_email_usuario")
+                    , rs.getString("password_user")
+                    , rs.getString("nm_tipo_usuario")
+                    , rs.getString("ic_sexo_m_f")
+                    , rs.getString("cpf_usuario"));
+        }
+        rs.close();
+        s.close();
+        return u;
+    }
+    
     public String getNm_usuario() {
         return nm_usuario;
     }
@@ -84,19 +107,19 @@ public class Usuario {
         this.cd_password_usuario = cd_password_usuario;
     }
 
-    public char getNm_tipo_usuario() {
+    public String getNm_tipo_usuario() {
         return nm_tipo_usuario;
     }
 
-    public void setNm_tipo_usuario(char nm_tipo_usuario) {
+    public void setNm_tipo_usuario(String nm_tipo_usuario) {
         this.nm_tipo_usuario = nm_tipo_usuario;
     }
 
-    public char getIc_sexo_M_F() {
+    public String getIc_sexo_M_F() {
         return ic_sexo_M_F;
     }
 
-    public void setIc_sexo_M_F(char ic_sexo_M_F) {
+    public void setIc_sexo_M_F(String ic_sexo_M_F) {
         this.ic_sexo_M_F = ic_sexo_M_F;
     }
 

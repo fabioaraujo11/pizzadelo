@@ -39,12 +39,10 @@ public class Cadastrar extends HttpServlet {
         String cdCPFCliente = request.getParameter("cpf");
         String nmEmail = request.getParameter("email");
         String cdSenha = request.getParameter("senha");
-        String icSexoMF = request.getParameter("sexo");
-        char icSexoMFCHAR =  icSexoMF.charAt(0);
-        
+        String icSexoMF = request.getParameter("sexo");        
         
         try {
-           Usuario.setUsuarios(nmCliente, nmEmail,cdSenha,'U',icSexoMFCHAR,cdCPFCliente);
+           Usuario.setUsuarios(nmCliente, nmEmail,cdSenha,"U",icSexoMF,cdCPFCliente);
         } catch (Exception ex) {
             Logger.getLogger(Cadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -24,19 +24,19 @@
                     <form action="Cadastrar" method="post">
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" class="form-control" name="nome">
+                            <input type="text" class="form-control" name="nome" placeholder="Digite seu nome">
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF:</label>
-                            <input type="text" class="form-control" name="cpf">
+                            <input type="text" class="form-control" name="cpf" placeholder="Digite seu CPF(Sem pontos e traços)">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail">
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha:</label>
-                            <input type="text" class="form-control" name="senha">
+                            <input type="text" class="form-control" name="senha" placeholder="Digite sua senha">
                         </div>
                         <div class="checkbox">
                             <label for="sexo">Sexo:</label>

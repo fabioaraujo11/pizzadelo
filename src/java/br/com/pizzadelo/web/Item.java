@@ -35,6 +35,7 @@ public class Item {
          s.close();
          return item;
      }
+    
     public static ArrayList<Item> getPizzaList() throws Exception{
         ArrayList<Item> list = new ArrayList<>();
         Statement s = Database.getConnection().createStatement();

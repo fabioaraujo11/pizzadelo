@@ -3,6 +3,7 @@
     Created on : 11/12/2017, 20:18:10
     Author     : vlf
 --%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="jdk.nashorn.internal.runtime.ListAdapter"%>
 <%@page import="br.com.pizzadelo.web.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -42,8 +43,14 @@
         }
     }
 
-    if (request.getParameter("edt") != null) {
-        itemo = Item.getBebidaList().get(0);
+    if (request.getParameter("Editar") != null) {
+        int cd = Integer.parseInt(request.getParameter("id"));
+        double vl = Double.parseDouble(request.getParameter("precomodal"));
+        String ds = request.getParameter("descricaomodal");
+        String nm = request.getParameter("nomemodal");
+        String tp = request.getParameter("tipomodal");
+       
+        Item.editaItem(cd, vl, ds, nm, tp);
     }
 
 %>
@@ -139,10 +146,12 @@
                         <th>Editar</th>
                         </thead>
                         </tr>
-                        <% for (int i = 0; i < Item.getPizzaList().size(); i++) {
-                                Item lista = Item.getPizzaList().get(i);
+                        <%
+                            ArrayList<Item> itens = Item.getPizzaList(); 
+                            for (Item lista : itens) {
+                               
                         %>
-                        <tr id="td">
+                        <tr id="td">    
                             <td ><%=lista.getNm_item()%></td>
                             <td><%=lista.getVl_item()%></td>
                             <td><%=lista.getDs_item()%></td>  
@@ -226,17 +235,17 @@
                         <div class="row">                
                             <div id="formContainer">
                                 <form>
-                                    <input placeholder="Nome do item" type="text" name="nome1" value="" required/>
-                                    <input type="number" placeholder="Preço R$" name="preco" value="" required="">
-                                    <select name="tipo" required="" selected="">
+                                    <input placeholder="Nome do item" type="text" name="nomemodal" value="" required/>
+                                    <input type="number" placeholder="Preço R$" name="precomodal" value="" required="">
+                                    <select name="tipomodal" required="" selected="">
                                         <option value="PIZZA">PIZZA</option>
                                         <option value="BEBIDA">BEBIDA</option>     
                                     </select>
                                     <br/>
                                     <div class="form-group">
-                                        <textarea placeholder="Descriçao do Produto"  class="form-control" id="exampleTextarea" name="descricao" rows="2" required=""></textarea>
+                                        <textarea placeholder="Descriçao do Produto"  class="form-control" id="exampleTextarea" name="descricaomodal" rows="2" required=""></textarea>
                                     </div>
-
+                                    <input type="hidden" name="id" value="  ">
                                     <button type="submit" name="Editar">Salvar Alteração</button><br/>
 
                                 </form>

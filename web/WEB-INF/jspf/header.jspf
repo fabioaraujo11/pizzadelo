@@ -10,14 +10,13 @@
         <form action="Logout" method="post">
             <a href="home.jsp"                      class="btn btn-primary btn-group" role="button">Início</a>
             <%if (!(session.getAttribute("me.nm_usuario") == null)) {%>
-            <a href="pizza.jsp"                     class="btn btn-primary btn-group" role="button">Fazer Pedido</a>
+            
+            <a href="pedidos.jsp"     class="btn btn-primary btn-group" role="button">Fazer Pedido</a>
+            <a href="pedidos.jsp"     class="btn btn-primary btn-group" role="button">Cardapio</a>
             <%if (session.getAttribute("me.nm_tipo_usuario").equals("A")) {%>
-            <a href="pedidos.jsp"     class="btn btn-primary btn-group" role="button">Pedidos [ADM]</a>
+           
             <a href="AdministradorProdutos.jsp"     class="btn btn-primary btn-group" role="button">Adicionar Item [ADM]</a>
             <%}%>
-            <a href="meuperfil.jsp"                 class="btn btn-primary btn-group" role="button">
-                <%=session.getAttribute("me.nm_usuario")%>
-            </a>
             <input type="submit" value="Sair"       class="btn btn-danger btn-group"></input>
             <%} else {%>
             <a href="cadastro.jsp"                  class="btn btn-success btn-group" role="button">Entrar</a>

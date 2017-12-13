@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cardapio</title>
         
         <%@include  file="WEB-INF/jspf/boot.jspf"%>
     </head>
@@ -31,7 +31,7 @@
                     Item lista = Item.getPizzaList().get(i);%>
                     <tr>
                         <td><%=lista.getNm_item()%></td>
-                        <td><%=lista.getDs_item()%> <%=lista.getNm_item()%></td>
+                        <td><%=lista.getDs_item()%></td>
                         <td><%=lista.getVl_item()%></td>
                     </tr>
                     <%}%>

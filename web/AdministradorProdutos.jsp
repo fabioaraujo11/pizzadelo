@@ -38,6 +38,8 @@
             erro1 = e.getMessage();
         }
     }
+    
+                       
 
 %>
 <html>
@@ -209,19 +211,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <%
-                        String nm = "";
-                        String ds = "";
-                        int cd = 0;
-                        double vl = 0;
-                        String tp = "";                        
-                            Item item = Item.getItemPizza(Integer.parseInt(request.getParameter("id")));
-                            nm = item.getNm_item();
-                            ds = item.getDs_item();
-                            vl = item.getVl_item();
-                            cd = item.getCd_item();
-                            tp = item.getTipo_item();
-        %>
+                    
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Editar Item</h4>
@@ -231,16 +221,16 @@
                         <div class="row">                
                             <div id="formContainer">
                                 <form>
-                                    <input placeholder="Nome do item" type="text" name="nome1" value="<%=nm%>" required/>
-                                    <input type="number" placeholder="Preço R$" name="preco" value="<%=vl%>" required="">
+                                    <input placeholder="Nome do item" type="text" name="nome1" value="" required/>
+                                    <input type="number" placeholder="Preço R$" name="preco" value="" required="">
 
-                                    <select name="tipo" required="" selected="<%=tp%>">
+                                    <select name="tipo" required="" selected="">
                                         <option value="PIZZA">PIZZA</option>
                                         <option value="BEBIDA">BEBIDA</option>     
                                     </select>
                                     <br/>
                                     <div class="form-group">
-                                        <textarea placeholder="Descriçao do Produto"  class="form-control" id="exampleTextarea" name="descricao" rows="2" required=""><%=ds%></textarea>
+                                        <textarea placeholder="Descriçao do Produto"  class="form-control" id="exampleTextarea" name="descricao" rows="2" required=""></textarea>
                                     </div>
 
                                     <button type="submit" name="Editar">Salvar Alteração</button><br/>

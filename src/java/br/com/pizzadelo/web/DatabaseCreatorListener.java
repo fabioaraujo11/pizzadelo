@@ -55,17 +55,16 @@ public class DatabaseCreatorListener implements ServletContextListener {
                     + ")");
 
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Portuguesa', 'PIZZA')");
+                    + "	VALUES (30.00, 'Pizza de Portuguesa com palmito, presunto, ovo e queijo', 'Portuguesa', 'PIZZA')");
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Mussarela', 'PIZZA')");
+                    + "	VALUES (30.00, 'Pizza de Queijo Mussarela', 'Mussarela', 'PIZZA')");
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Calabresa', 'PIZZA')");
+                    + "	VALUES (30.00, 'Pizza deliciosa de calabresa', 'Calabresa', 'PIZZA')");
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Frango com Catupiry', 'PIZZA')");
+                    + "	VALUES (30.00, 'Pizza de Frango com Catupiry', 'Frango com Catupiry', 'PIZZA')");
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Quatro Queijos', 'PIZZA')");
-            s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
-                    + "	VALUES (30.00, 'Pizza de', 'Tomate', 'PIZZA')");
+                    + "	VALUES (30.00, 'Pizza de Quatro Queijos', 'Quatro Queijos', 'PIZZA')");
+            
 
             s.execute("INSERT INTO APP.ITEM (VL_ITEM, DS_ITEM, NM_ITEM, TIPO_ITEM) \n"
                     + "	VALUES (5.00, '-', 'Coca-Cola', 'BEBIDA')");

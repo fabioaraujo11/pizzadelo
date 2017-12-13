@@ -93,6 +93,20 @@ public class Item {
         s.execute();
         s.close();
     }
+    public static void editaItem(int cd_item,double vl_item , String ds_item, String nm_item, String tipo_item) throws Exception{
+           
+            String SQL = "UPDATE item SET vl_item=?,ds_item=?,nm_item=?,tipo_item=? WHERE cd_item=?";
+            PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+            s.setDouble(1, vl_item);
+            s.setString(2, ds_item);
+            s.setString(3, nm_item);
+            s.setString(4, tipo_item);
+            s.setInt(5, cd_item);
+            s.execute();
+            s.close();
+            
+     }
+    
     public static void deletaItem(int cd_item) throws Exception{
         String SQL ="DELETE FROM item WHERE cd_item =?";
         PreparedStatement s = Database.getConnection().prepareStatement(SQL);

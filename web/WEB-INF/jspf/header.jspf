@@ -2,7 +2,7 @@
 <%@page import="br.com.pizzadelo.web.Usuario"%>
 <%@ page pageEncoding="UTF-8" %>
 <%@page import="br.com.pizzadelo.web.Login" %>
-<nav id="menu" class="container-fluid navbar "  >
+<nav id="menu" class="container-fluid navbar "  style="background-color: #F5F5DC">
     <div class="brand" style="float:left;" >
         <h1 class="display-4">Projeto Pizza</h1>
     </div>
